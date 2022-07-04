@@ -1,20 +1,20 @@
 import React from "react";
 
 export function Sidebar() {
-  const blogs = JSON.parse(localStorage.getItem("blogs"));
+  // const blogs = JSON.parse(localStorage.getItem("blogs"));
 
-  const remove = (e, id) => {
-    const arr = [...blogs];
+  // const remove = (e, id) => {
+  //   const arr = [...blogs];
 
-    const findIndex = arr.findIndex((blog) => {
-      return blog.id === id;
-    });
+  //   const findIndex = arr.findIndex((blog) => {
+  //     return blog.id === id;
+  //   });
 
-    if (findIndex > -1) {
-      arr.splice(findIndex, 1);
-      localStorage.setItem("blogs", JSON.stringify(arr));
-    }
-  };
+  //   if (findIndex > -1) {
+  //     arr.splice(findIndex, 1);
+  //     localStorage.setItem("blogs", JSON.stringify(arr));
+  //   }
+  // };
 
   return (
     <div class="wrapper">
@@ -22,7 +22,7 @@ export function Sidebar() {
         <div class="profile">
           <img src="assets/imags/Profile.jpg" alt="profile_picture" />
           {/* {blogs.map((user) => { */}
-          <h3>{blogs.name}</h3>
+          {/* <h3>{blogs.name}</h3> */}
           <p>Web Developer</p>
         </div>
         <ul>
