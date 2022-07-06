@@ -304,8 +304,8 @@ h1 {
 } */
 
 .card-body{
-  width:920px;
-  height:600px;
+  width:auto;
+  height:auto;
   position:relative;
   background-color: transparent;
   transition: transform 0.8s;
@@ -318,6 +318,7 @@ h1 {
 
 .pp{
   margin-top: 75px;
+  margin-bottom: 75px;
 
 }
 
@@ -478,7 +479,7 @@ header::before {
   flex: 1;
   flex-basis: 300px;
   flex-grow: 0;
-  height: 440px;
+  
   background: #fff;
   border: 2px solid #fff;
   box-shadow: 0px 4px 7px rgba(0,0,0,.5);
@@ -865,4 +866,80 @@ transform: translateY(-50%) translateX(0px)  scale(1);
 
 .pp{
   background-image: url("https://images.unsplash.com/photo-1477313372947-d68a7d410e9f?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb")
+}
+
+
+@media (max-width:767px){
+
+.Nav .fluid {
+  justify-content: center !important;
+
+
+
+}
+.brand{
+  margin-right: 0px !important;
+}
+
+.nav-link{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+.me-auto{
+  flex-direction: inherit !important;
+}
+.carousel-item{
+  height: 300px;
+}
+.carousel-item img{
+  height: 300px;
+}
+.carousel-caption p{
+  font-size: 10px;
+
+}
+.carousel-caption h3{
+  font-size: 12px;
+  font-weight: bold;
+
+}
+.carousel-caption{
+  top:46%;
+}
+
+.app{
+  
+  flex-direction: inherit !important;
+
+}
+
+.form{
+    margin:  auto;
+    padding: 0px;
+    height: auto;
+    width:auto
+}
+
+.form__label {
+  width: 100%;
+}
+
+.card-title , .card-text , p,ol li{
+  color: white !important;
+}
+
+.pp{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+}
+
+
+
+
+
+.card-title , .card-text , p,ol li{
+  color: white !important;
 }

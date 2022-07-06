@@ -49,46 +49,47 @@ export function Post() {
         </div>
 
         <div className="col-md-9">
-          <table class="table">
-            <thead class="table-dark">
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">User_ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Blog</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {blogs.map((blog) => {
-                return (
-                  <tr class="table-info">
-                    <th scope="row">{blog.id + 1}</th>
-                    <td>{blog.userId}</td>
-                    <td>{blog.title}</td>
-                    <td>{blog.body}</td>
-                    <td></td>
-                    <td>
-                      <button
-                        type="button"
-                        className=" btn  btn-primary"
-                        onClick={(e) => Edit(blog.id, blog.title, blog.body)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        className="  btn-danger btn"
-                        onClick={(e) => remove(e, blog.id)}
-                      >
-                        Remove
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-              {/* <tr>
+          <div className="table-responsive">
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">User_ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Blog</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {blogs.map((blog) => {
+                  return (
+                    <tr class="table-info">
+                      <th scope="row">{blog.id + 1}</th>
+                      <td>{blog.userId}</td>
+                      <td>{blog.title}</td>
+                      <td>{blog.body}</td>
+                      <td></td>
+                      <td>
+                        <button
+                          type="button"
+                          className=" btn  btn-primary"
+                          onClick={(e) => Edit(blog.id, blog.title, blog.body)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          className="  btn-danger btn"
+                          onClick={(e) => remove(e, blog.id)}
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+                {/* <tr>
                 <th scope="row">2</th>
                 <td>Jacob</td>
                 <td>Thornton</td>
@@ -99,8 +100,9 @@ export function Post() {
                 <td colspan="2">Larry the Bird</td>
                 <td>@twitter</td>
               </tr> */}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

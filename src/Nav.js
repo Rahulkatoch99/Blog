@@ -16,17 +16,17 @@ import { useNavigate } from "react-router-dom";
 function MyNav() {
   const navigate = useNavigate();
   const onAboutClick = () => {
-    navigate("about/");
+    navigate("/about");
   };
 
   return (
-    <Navbar expand="lg" bg="white" variant="white">
+    <Navbar className="Nav" expand="lg" bg="white" variant="white">
       <Container className="fluid">
-        <Navbar.Brand>Blogger</Navbar.Brand>
+        <Navbar.Brand className="brand">Blogger</Navbar.Brand>
         <Nav className="me-auto ">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="Registration/">Registration</Nav.Link>
-          <Nav.Link href="Login/">Login</Nav.Link>
+          <Nav.Link href="/Registration">Registration</Nav.Link>
+          <Nav.Link href="/Login">Login</Nav.Link>
           <Nav.Link onClick={onAboutClick}>About</Nav.Link>
         </Nav>
         <Form className="d-flex">

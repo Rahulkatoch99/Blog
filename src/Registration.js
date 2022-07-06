@@ -64,10 +64,9 @@ function RegistrationForm() {
   };
 
   const renderForm = (
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col"></div>
-        <div class="col">
+    <div className="container">
+      <div className="row">
+        <div className="col">
           <div className="form">
             {/* <div className="form-body"> */}
             <div className="input-container">
