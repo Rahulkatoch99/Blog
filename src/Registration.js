@@ -5,6 +5,9 @@ import "./App.css";
 function RegistrationForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [gender, setGender] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,6 +22,15 @@ function RegistrationForm() {
     if (id === "lastName") {
       setLastName(value);
     }
+    if (id === "gender") {
+      setGender(value);
+    }
+    if (id === "address") {
+      setAddress(value);
+    }
+    if (id === "phone") {
+      setPhone(value);
+    }
     if (id === "email") {
       setEmail(value);
     }
@@ -29,34 +41,76 @@ function RegistrationForm() {
       setConfirmPassword(value);
     }
   };
-  const handleSubmit = () => {
-    if (password === confirmPassword) {
-      let users = [];
-      const usersGet = localStorage.getItem("users");
+  // const handleSubmit = () => {
+  //   if (password === confirmPassword) {
+  //     let users = [];
+  //     const usersGet = localStorage.getItem("users");
 
-      if (usersGet) {
-        const usersArr = JSON.parse(usersGet);
-        users = [...usersArr];
+  //     if (usersGet) {
+  //       const usersArr = JSON.parse(usersGet);
+  //       users = [...usersArr];
+  //     }
+
+  //     const user = {
+  //       id: Math.random().toString(),
+  //       firstName: firstName,
+  //       lastName,
+  //       email,
+  //       password,
+  //     };
+
+  //     users.push(user);
+
+  //     localStorage.setItem("users", JSON.stringify(users));
+  //     alert("Registration is successfull!");
+
+  //     if (user) {
+  //       setIsSubmitted(true);
+  //     }
+  //   } else {
+  //     alert("Password didn't match");
+  //   }
+  // };
+
+  const handleSubmit = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      firstname: firstName,
+      lastname: lastName,
+      gender: gender,
+      phone: phone,
+      address: address,
+      email: email,
+      password: password,
+      Confirmpassword: confirmPassword,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:3000/registration",
+        requestOptions
+      );
+
+      if (!response.ok) {
+        const err = await response.json();
+        alert(err.error);
+        return;
       }
 
-      const user = {
-        id: Math.random().toString(),
-        firstName: firstName,
-        lastName,
-        email,
-        password,
-      };
-
-      users.push(user);
-
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("Registration is successfull!");
-
-      if (user) {
-        setIsSubmitted(true);
-      }
-    } else {
-      alert("Password didn't match");
+      const result = await response.json();
+      console.log(result);
+      login();
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -98,6 +152,51 @@ function RegistrationForm() {
                   className="form__input"
                   onChange={(e) => handleInputChange(e)}
                   placeholder="LastName"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="gender">
+                  Gender{" "}
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  required
+                  id="gender"
+                  value={gender}
+                  className="form__input"
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="Gender"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="phone">
+                  Phone{" "}
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  required
+                  id="phone"
+                  value={phone}
+                  className="form__input"
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="Phone"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="address">
+                  Address{" "}
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  required
+                  id="address"
+                  value={address}
+                  className="form__input"
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="Address"
                 />
               </div>
               <div className="input-container">

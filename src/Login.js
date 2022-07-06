@@ -12,26 +12,60 @@ function Login() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-    let users = [];
-    const usersGet = localStorage.getItem("users");
+  //   let users = [];
+  //   const usersGet = localStorage.getItem("users");
 
-    if (usersGet) {
-      const usersArr = JSON.parse(usersGet);
-      users = [...usersArr];
-    }
+  //   if (usersGet) {
+  //     const usersArr = JSON.parse(usersGet);
+  //     users = [...usersArr];
+  //   }
 
-    const user = users.find((user) => {
-      return user.email === email && user.password === password;
+  //   const user = users.find((user) => {
+  //     return user.email === email && user.password === password;
+  //   });
+
+  //   if (user) {
+  //     localStorage.setItem("loggedInUser", JSON.stringify(user));
+  //     setIsSubmitted(true);
+  //   } else {
+  //     alert("Incorrect email or password!");
+  //   }
+  // };
+
+  const handleSubmit = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      email: email,
+      password: password,
     });
 
-    if (user) {
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
-      setIsSubmitted(true);
-    } else {
-      alert("Incorrect email or password!");
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+    try {
+      const response = await fetch(
+        "http://localhost:3000/Login",
+        requestOptions
+      );
+      if (!response.ok) {
+        const err = await response.json();
+        alert(err.error);
+        return;
+      }
+
+      const result = await response.json();
+      console.log(result);
+      dashboardlogin();
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -76,7 +110,7 @@ function Login() {
           />
         </div>
         <div className="button-container">
-          <input type="submit" />
+          <input onClick={() => handleSubmit()} type="submit" />
         </div>
       </form>
     </div>
