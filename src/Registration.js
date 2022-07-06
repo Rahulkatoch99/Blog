@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { WebsiteLayout } from "./layouts/WebsiteLayout";
 import "./App.css";
 function RegistrationForm() {
   const [firstName, setFirstName] = useState("");
@@ -64,117 +65,121 @@ function RegistrationForm() {
   };
 
   const renderForm = (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <div className="form">
-            {/* <div className="form-body"> */}
-            <div className="input-container">
-              <label className="form__label" htmlFor="firstName">
-                First Name{" "}
-              </label>
-              <input
-                className="form__input"
-                required
-                type="text"
-                value={firstName}
-                onChange={(e) => handleInputChange(e)}
-                id="firstName"
-                placeholder="First Name"
-              />
-            </div>
-            <div className="input-container">
-              <label className="form__label" htmlFor="lastName">
-                Last Name{" "}
-              </label>
-              <input
-                type="text"
-                name=""
-                required
-                id="lastName"
-                value={lastName}
-                className="form__input"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="LastName"
-              />
-            </div>
-            <div className="input-container">
-              <label className="form__label" htmlFor="email">
-                Email{" "}
-              </label>
-              <input
-                type="email"
-                id="email"
-                required
-                className="form__input"
-                value={email}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Email"
-              />
-            </div>
-            <div className="input-container">
-              <label className="form__label" htmlFor="password">
-                Password{" "}
-              </label>
-              <input
-                className="form__input"
-                required
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Password"
-              />
-            </div>
-            <div className="input-container">
-              <label className="form__label" htmlFor="confirmPassword">
-                Confirm Password{" "}
-              </label>
-              <input
-                className="form__input"
-                required
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Confirm Password"
-              />
-            </div>
-            {/* </div> */}
-            <div className="button-container">
-              <button
-                onClick={() => handleSubmit()}
-                type="submit"
-                className="btn  btn-success"
-              >
-                Register
-              </button>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <div className="form">
+              {/* <div className="form-body"> */}
+              <div className="input-container">
+                <label className="form__label" htmlFor="firstName">
+                  First Name{" "}
+                </label>
+                <input
+                  className="form__input"
+                  required
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => handleInputChange(e)}
+                  id="firstName"
+                  placeholder="First Name"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="lastName">
+                  Last Name{" "}
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  required
+                  id="lastName"
+                  value={lastName}
+                  className="form__input"
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="LastName"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="email">
+                  Email{" "}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  className="form__input"
+                  value={email}
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="Email"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="password">
+                  Password{" "}
+                </label>
+                <input
+                  className="form__input"
+                  required
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="Password"
+                />
+              </div>
+              <div className="input-container">
+                <label className="form__label" htmlFor="confirmPassword">
+                  Confirm Password{" "}
+                </label>
+                <input
+                  className="form__input"
+                  required
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="Confirm Password"
+                />
+              </div>
+              {/* </div> */}
+              <div className="button-container">
+                <button
+                  onClick={() => handleSubmit()}
+                  type="submit"
+                  className="btn  btn-success"
+                >
+                  Register
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 
   return (
-    <div className="app">
-      <div className="login-form">
-        <div className="title">Registration</div>
-        {isSubmitted ? (
-          <div>
-            Registration successfully <br></br>{" "}
-            <input
-              type="Submit"
-              class="btn btn-success"
-              onClick={(e) => login(e)}
-              placeholder="login"
-            />
-          </div>
-        ) : (
-          renderForm
-        )}
+    <WebsiteLayout>
+      <div className="app">
+        <div className="login-form">
+          <div className="title">Registration</div>
+          {isSubmitted ? (
+            <div>
+              Registration successfully <br></br>{" "}
+              <input
+                type="Submit"
+                class="btn btn-success"
+                onClick={(e) => login(e)}
+                placeholder="login"
+              />
+            </div>
+          ) : (
+            renderForm
+          )}
+        </div>
       </div>
-    </div>
+    </WebsiteLayout>
   );
 }
 

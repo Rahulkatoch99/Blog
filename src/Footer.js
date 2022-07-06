@@ -1,31 +1,30 @@
 import React from "react";
 
-
 const FooterPage = () => (
-    <div className="footer">
+  <div className="footer">
     {/* <p>This is some content in sticky footer</p> */}
-        <div className="contain">
-    <div className="col">
+    <div className="contain">
+      <div className="col">
         <h1>Company</h1>
         <ul>
-        <li>About</li>
-        <li>Mission</li>
-        <li>Services</li>
-        <li>Social</li>
-        <li>Get in touch</li>
+          <li>About</li>
+          <li>Mission</li>
+          <li>Services</li>
+          <li>Social</li>
+          <li>Get in touch</li>
         </ul>
-    </div>
-    <div className="col">
+      </div>
+      <div className="col">
         <h1>Products</h1>
         <ul>
-        <li>About</li>
-        <li>Mission</li>
-        <li>Services</li>
-        <li>Social</li>
-        <li>Get in touch</li>
+          <li>About</li>
+          <li>Mission</li>
+          <li>Services</li>
+          <li>Social</li>
+          <li>Get in touch</li>
         </ul>
-    </div>
-    <div className="col">
+      </div>
+      {/* <div className="col">
         <h1>Accounts</h1>
         <ul>
         <li>About</li>
@@ -53,8 +52,8 @@ const FooterPage = () => (
         <li>Web chat</li>
         <li>Open ticket</li>
         </ul>
-    </div>
-    {/* <div className="col social">
+    </div> */}
+      {/* <div className="col social">
         <h1>Social</h1>
         <ul>
         <li><img src="https://svgshare.com/i/5fq.svg" width="32" <Style="width: 32px;"/></li>
@@ -62,9 +61,9 @@ const FooterPage = () => (
         <li><img src="https://svgshare.com/i/5f_.svg" width="32" Style="width: 32px;"/></li>
         </ul>
     </div> */}
-    <div className="clearfix"></div>
+      <div className="clearfix"></div>
     </div>
-</div>
+  </div>
 );
 
 export default FooterPage;

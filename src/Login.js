@@ -1,57 +1,53 @@
-
-import React, {useState} from 'react';
+import React, { useState } from "react";
 // import { WebsiteLayout } from "./layouts/WebsiteLayout";
 // import { Container , Row , Col} from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 // import { Home } from './pages/Home';
+import { WebsiteLayout } from "./layouts/WebsiteLayout";
 // import Dashboard from './Dashboard';
 
-
-function Login(){
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [isSubmitted, setIsSubmitted] = useState(false)
-    const navigate = useNavigate();
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     let users = [];
-    const usersGet = localStorage.getItem("users")
+    const usersGet = localStorage.getItem("users");
 
-    if(usersGet) {
-        const usersArr = JSON.parse(usersGet)
-        users = [...usersArr]
+    if (usersGet) {
+      const usersArr = JSON.parse(usersGet);
+      users = [...usersArr];
     }
 
-    const user = users.find(user => {
-        return user.email === email && user.password === password
-    })
+    const user = users.find((user) => {
+      return user.email === email && user.password === password;
+    });
 
     if (user) {
-        localStorage.setItem('loggedInUser', JSON.stringify(user))
-        setIsSubmitted(true)
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      setIsSubmitted(true);
     } else {
-        alert('Incorrect email or password!')
+      alert("Incorrect email or password!");
     }
-
   };
 
   const handleInputChange = (e) => {
-    const {id , value} = e.target;
-    if(id === "email"){
-        setEmail(value);
+    const { id, value } = e.target;
+    if (id === "email") {
+      setEmail(value);
     }
-    if(id === "password"){
-        setPassword(value);
+    if (id === "password") {
+      setPassword(value);
     }
+  };
 
-}
-
-const dashboardlogin = (e) => {
-  navigate('/Dashboard')
-}
-
+  const dashboardlogin = (e) => {
+    navigate("/Dashboard");
+  };
 
   // JSX code for login form
   const renderForm = (
@@ -59,11 +55,25 @@ const dashboardlogin = (e) => {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Email </label>
-          <input type="text" name="uname" id="email" required value={email} onChange = {(e) => handleInputChange(e)} />
+          <input
+            type="text"
+            name="uname"
+            id="email"
+            required
+            value={email}
+            onChange={(e) => handleInputChange(e)}
+          />
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" id="password" required value={password} onChange = {(e) => handleInputChange(e)} />
+          <input
+            type="password"
+            name="pass"
+            id="password"
+            required
+            value={password}
+            onChange={(e) => handleInputChange(e)}
+          />
         </div>
         <div className="button-container">
           <input type="submit" />
@@ -73,19 +83,26 @@ const dashboardlogin = (e) => {
   );
 
   return (
-    <div className="app">
-      <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in<br></br> <input type="Submit" class="btn btn-success"  onClick = {(e) => dashboardlogin(e)} /></div>: renderForm}
-        
-        
-        
+    <WebsiteLayout>
+      <div className="app">
+        <div className="login-form">
+          <div className="title">Sign In</div>
+          {isSubmitted ? (
+            <div>
+              User is successfully logged in<br></br>{" "}
+              <input
+                type="Submit"
+                class="btn btn-success"
+                onClick={(e) => dashboardlogin(e)}
+              />
+            </div>
+          ) : (
+            renderForm
+          )}
+        </div>
       </div>
-    </div>
-    
+    </WebsiteLayout>
   );
-};
-
-
+}
 
 export default Login;
